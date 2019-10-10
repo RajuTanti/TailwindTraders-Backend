@@ -43,6 +43,10 @@ stages:
 
     steps:
 
+    - task: CmdLine@2
+      inputs:
+        script: 'git checkout ed86d5f'
+
     - task: AzureCLI@1
       displayName: 'AZ ACR Login'
       inputs:
