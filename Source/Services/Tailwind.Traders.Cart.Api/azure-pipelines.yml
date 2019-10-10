@@ -15,7 +15,7 @@ pr:
 variables:
 
   # Azure
-  azureSubscription: nepeters-azure
+  azureSubscription: azure-service-connection
 
   # AKS Container Registry
   containerRegistryName: ttacrjxqr5ntey3ut6
@@ -140,7 +140,7 @@ stages:
           - task: AzureCLI@1
             displayName: Deploy Pre-Production
             inputs:
-              azureSubscription: 'nepeters-azure'
+              azureSubscription: $(azureSubscription)
               scriptLocation: 'inlineScript'
               inlineScript: |
                 az extension add -n application-insights
@@ -177,7 +177,7 @@ stages:
           - task: AzureCLI@1
             displayName: Deploy Production
             inputs:
-              azureSubscription: 'nepeters-azure'
+              azureSubscription: $(azureSubscription)
               scriptLocation: 'inlineScript'
               inlineScript: |
                 az extension add -n application-insights
